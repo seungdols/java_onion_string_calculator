@@ -10,13 +10,13 @@ public class CalculatorTest {
 	@Test
 	public void add() throws Exception {
 		Calculator calculator = new Calculator();
-		System.out.println(calculator.add(3,4));
+		assertEquals(12, calculator.add(6,6));
 	}
 
 	@Test
 	public void subtract() throws Exception {
 		Calculator calculator = new Calculator();
-		System.out.println(calculator.subtract(9, 3));
+		assertEquals(6, calculator.subtract(8,2));
 	}
 
 }
