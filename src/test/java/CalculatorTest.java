@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -7,15 +8,20 @@ import org.junit.Test;
  */
 public class CalculatorTest {
 
+	private Calculator calculator;
+
+	@Before
+	public void setUp() throws Exception {
+		calculator = new Calculator();
+	}
+
 	@Test
 	public void add() throws Exception {
-		Calculator calculator = new Calculator();
 		assertEquals(12, calculator.add(6,6));
 	}
 
 	@Test
 	public void subtract() throws Exception {
-		Calculator calculator = new Calculator();
 		assertEquals(6, calculator.subtract(8,2));
 	}
 
