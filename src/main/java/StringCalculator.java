@@ -20,15 +20,32 @@ public class StringCalculator {
 	}
 
 	private String[] split(String text) {
-		return text.split(",");
+
+		Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+		if (matcher.find()) {
+			String customDelimeter = matcher.group(1);
+			return matcher.group(2).split(customDelimeter);
+		}
+
+		return text.split(",|:");
 	}
 
 	private int[] toInts(String[] tokens) {
 		int[] numbers = new int[tokens.length];
-		for(int i= 0; i < tokens.length; i++) {
-			numbers[i] = Integer.parseInt(tokens[i]);
+		for (int i = 0; i < tokens.length; i++) {
+			numbers[i] = toPositive(tokens[i]);
 		}
 		return numbers;
+	}
+
+	private int toPositive(String value) {
+		int number = Integer.parseInt(value);
+
+		if (number < 0) {
+			throw new RuntimeException();
+		}
+
+		return number;
 	}
 
 	private int sum(int[] tokens) {
@@ -36,7 +53,6 @@ public class StringCalculator {
 		for (int value : tokens) {
 			sum += value;
 		}
-
 		return sum;
 	}
 
