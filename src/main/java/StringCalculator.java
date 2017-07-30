@@ -13,6 +13,11 @@ public class StringCalculator {
 		}
 
 		String[] tokens = text.split(",");
+
+		return sum(tokens);
+	}
+
+	private int sum(String[] tokens) {
 		int sum = 0;
 		for (String value : tokens) {
 			sum += Integer.parseInt(value);
