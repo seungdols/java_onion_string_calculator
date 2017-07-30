@@ -8,11 +8,20 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
 	int add(String text) {
-		if (text == null || text.isEmpty()) {
+		if (text == null || text.isEmpty() || text.equals(" ")) {
 			return 0;
 		}
 
-		return 0;
+		if (text.contains(",")) {
+			String[] tokens = text.split(",");
+			int sum = 0;
+			for (String value : tokens) {
+				sum += Integer.parseInt(value);
+			}
+			return sum;
+		}
+
+		return Integer.parseInt(text);
 	}
 
 }
