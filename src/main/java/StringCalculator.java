@@ -8,19 +8,33 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
 	int add(String text) {
-		if (text == null || text.isEmpty() || text.equals(" ")) {
+		if (isBlank(text)) {
 			return 0;
 		}
 
-		String[] tokens = text.split(",");
-
-		return sum(tokens);
+		return sum(toInts(split(text)));
 	}
 
-	private int sum(String[] tokens) {
+	private boolean isBlank(String text) {
+		return text == null || text.isEmpty() || text.equals(" ");
+	}
+
+	private String[] split(String text) {
+		return text.split(",");
+	}
+
+	private int[] toInts(String[] tokens) {
+		int[] numbers = new int[tokens.length];
+		for(int i= 0; i < tokens.length; i++) {
+			numbers[i] = Integer.parseInt(tokens[i]);
+		}
+		return numbers;
+	}
+
+	private int sum(int[] tokens) {
 		int sum = 0;
-		for (String value : tokens) {
-			sum += Integer.parseInt(value);
+		for (int value : tokens) {
+			sum += value;
 		}
 
 		return sum;
