@@ -12,16 +12,13 @@ public class StringCalculator {
 			return 0;
 		}
 
-		if (text.contains(",")) {
-			String[] tokens = text.split(",");
-			int sum = 0;
-			for (String value : tokens) {
-				sum += Integer.parseInt(value);
-			}
-			return sum;
+		String[] tokens = text.split(",");
+		int sum = 0;
+		for (String value : tokens) {
+			sum += Integer.parseInt(value);
 		}
 
-		return Integer.parseInt(text);
+		return sum;
 	}
 
 }
